@@ -1,2 +1,7 @@
 ---
 # handlers file for common
+- name: docker service start
+  service:
+    name: docker
+    state: started
+    enabled: yes

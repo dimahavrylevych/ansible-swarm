@@ -1,0 +1,15 @@
+---
+- name: preparation play
+  hosts: all
+  gather_facts: yes
+  become: yes
+  roles:
+    - common
+    - hosts
+
+- name: swarm play
+  hosts: masters
+  gather_facts: yes
+  become: yes
+  roles:
+    - swarm-init

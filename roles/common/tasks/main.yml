@@ -1,2 +1,21 @@
 ---
 # tasks file for common
+- name: install EPEL
+  yum:
+   name: 'epel-release'
+   state: installed
+
+- name: install packages
+  package: name={{item}} state=installed
+  with_items:
+       - yum-utils
+       - device-mapper-persistent-data
+       - lvm2
+       - docker
+  notify: docker service start
+
+- name: add user to docker group
+  user:
+    name: "{{ ansible_user_id }}"
+    group: dockerroot
+    append: yes

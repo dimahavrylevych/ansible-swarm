@@ -1,2 +1,5 @@
 ---
 # tasks file for swarm-init
+- name: swarm init
+  command: docker swarm init --advertise-addr {{ ansible_host }}
+  register: swarm-init
